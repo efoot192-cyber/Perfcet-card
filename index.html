@@ -88,6 +88,52 @@ video {width:100%;border-radius:12px;margin-top:10px;}
 #loadingBar {
   transition: width 0.3s ease;
 }
+.balance-box-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.balance-box-updated {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  padding: 20px 30px;
+  border-radius: 15px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  min-width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.balance-box-updated:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+}
+
+.balance-title-updated {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.balance-amount-updated {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.balance-amount-updated .currency {
+  font-size: 20px;
+}
+
+.balance-username-updated {
+  font-size: 14px;
+  opacity: 0.8;
+}
 </style>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
@@ -137,16 +183,16 @@ video {width:100%;border-radius:12px;margin-top:10px;}
     <h3></h3>
     <div class="balance-card">
       <div class="chip"></div>
-      <div class="balance-box">
-        <span class="balance-title">رصيدك </span>
-        <div class="balance-row">
-          <span class="currency">$</span>
-          <span class="balance-amount" id="balance">0</span>
-        </div>
-        <span class="balance-note"> اسم مستخدم </span>
-      </div>
-      <div class="user-name" id="userNameDisplay">اسم المستخدم</div>
+      <div class="balance-box-container">
+  <div class="balance-box-updated">
+    <div class="balance-title-updated">رصيدك الحالي</div>
+    <div class="balance-amount-updated">
+      <span class="currency">$</span>
+      <span id="balance">0</span>
     </div>
+    <div class="balance-username-updated" id="userNameDisplay">اسم المستخدم</div>
+  </div>
+      </div>
 
     <button onclick="refreshBalance()">🔄 تحديث الرصيد</button>
     <p id="msgRefresh"></p>
@@ -515,6 +561,7 @@ function processQRPayment(data){
 </script>
 </body>
     </html>
+
 
 
 
